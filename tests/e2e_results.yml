@@ -1,0 +1,51 @@
+test_results:
+
+- name: chatbot greets user
+pass_status: true
+expected_steps:
+- user: γεια σας
+- utter: utter_user_greet
+difference: []
+
+- name: user ask information about instructors of specific course
+pass_status: false
+expected_steps:
+- user: καλησπερα
+- utter: utter_user_greet
+- utter: utter_ask_user_task
+- user: Πληροφορίες για τα μαθήματα
+- utter: utter_ask_course_name
+- user: γραμμικη αλγεβρα
+- utter: utter_ask_info_type
+- user: πληροφορία για καθηγητές
+- utter: utter_teacher_info
+difference:
+- ' user: καλησπερα'
+- ' bot: utter_user_greet'
+- ' bot: utter_ask_user_task'
+- ' user: Πληροφορίες για τα μαθήματα'
+- ' bot: utter_ask_course_name'
+- ' user: γραμμικη αλγεβρα'
+- '- bot: utter_course_name_not_exists'
+- '+ bot: utter_ask_info_type'
+- ' user: πληροφορία για καθηγητές'
+- '- bot: utter_out_of_scope'
+- '+ bot: utter_teacher_info'
+
+- name: user ask general question about Computer Science Department
+pass_status: true
+expected_steps:
+- user: γεια σας
+- utter: utter_user_greet
+- utter: utter_ask_user_task
+- user: Γενικές ερωτήσεις για σχολή
+- utter: utter_ask_collect_user_query
+- user: δωσε τηλεφωνο της γραμματειας
+difference: []
+
+- name: user ask out of scope question
+pass_status: true
+expected_steps:
+- user: τι μερα ειναι σημερα
+- utter: utter_cannot_handle
+difference: []

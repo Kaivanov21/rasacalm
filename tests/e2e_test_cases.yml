@@ -1,0 +1,33 @@
+test_cases:
+  - test_case: chatbot greets user
+    steps:
+    - user: γεια σας
+    - utter: utter_user_greet
+  
+  - test_case: user ask information about instructors of specific course
+    steps:
+    - user: καλησπερα
+    - utter: utter_user_greet
+    - utter: utter_ask_user_task
+    - user: Πληροφορίες για τα μαθήματα
+    - utter: utter_ask_course_name
+    - user: γραμμικη αλγεβρα
+    - utter: utter_ask_info_type
+    - user: πληροφορία για καθηγητές
+    - utter: utter_teacher_info
+
+  - test_case: user ask general question about Computer Science Department
+    steps:
+    - user: γεια σας
+    - utter: utter_user_greet
+    - utter: utter_ask_user_task
+    - user: Γενικές ερωτήσεις για σχολή
+    - utter: utter_ask_collect_user_query
+    - user: δωσε τηλεφωνο της γραμματειας
+    
+
+  
+  - test_case: user ask out of scope question
+    steps:
+    - user: τι μερα ειναι σημερα
+    - utter: utter_cannot_handle
